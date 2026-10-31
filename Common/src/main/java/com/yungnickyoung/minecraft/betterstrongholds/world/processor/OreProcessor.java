@@ -17,7 +17,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
  * Replaces Nether gold ore blocks with a random ore.
  * The chance of a given ore being chosen is determined by the config.
  */
-public class OreProcessor extends StructureProcessor {
+public class OreProcessor implements StructureProcessor {
     public static final OreProcessor INSTANCE = new OreProcessor();
     public static final MapCodec<OreProcessor> CODEC = MapCodec.unit(() -> INSTANCE);
 
@@ -25,7 +25,7 @@ public class OreProcessor extends StructureProcessor {
     public StructureTemplate.StructureBlockInfo processBlock(LevelReader levelReader,
                                                              BlockPos jigsawPiecePos,
                                                              BlockPos jigsawPieceBottomCenterPos,
-                                                             StructureTemplate.StructureBlockInfo blockInfoLocal,
+                                                             BlockPos blockPosLocal,
                                                              StructureTemplate.StructureBlockInfo blockInfoGlobal,
                                                              StructurePlaceSettings structurePlacementData) {
         if (blockInfoGlobal.state().getBlock() == Blocks.NETHER_GOLD_ORE) {
@@ -37,7 +37,8 @@ public class OreProcessor extends StructureProcessor {
         return blockInfoGlobal;
     }
 
-    protected StructureProcessorType<?> getType() {
+    @Override
+    public MapCodec<? extends StructureProcessor> codec() {
         return StructureProcessorTypeModule.ORE_PROCESSOR;
     }
 }
