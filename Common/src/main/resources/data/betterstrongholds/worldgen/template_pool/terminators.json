@@ -5,15 +5,6 @@
     {
       "weight": 1,
       "element": {
-        "location": "betterstrongholds:terminators/spiral_stairs_terminator",
-        "processors": "betterstrongholds:terminators",
-        "projection": "rigid",
-        "element_type": "minecraft:single_pool_element"
-      }
-    },
-    {
-      "weight": 1,
-      "element": {
         "location": "betterstrongholds:terminators/hall_doorway_terminator",
         "processors": "betterstrongholds:terminators",
         "projection": "rigid",
